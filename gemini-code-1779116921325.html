@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEAGENCY - Jasa Ulasan Bintang 5 Terpercaya</title>
+
+    <meta name="description" content="SEAGENCY - Jasa ulasan bintang 5 terpercaya untuk Shopee & TikTok Shop. Tingkatkan reputasi dan penjualan toko online Anda sekarang!">
+    <meta property="og:title" content="SEAGENCY | Jasa Ulasan Bintang 5">
+    <meta property="og:description" content="Promo Eksklusif! Ulasan organik dengan akun real untuk optimasi toko online Anda. Klik untuk ambil promonya!">
+    <meta property="og:image" content="https://contoh-link-gambar-logo-anda.com/logo.jpg"> 
+    <meta property="og:type" content="website">
+    <link rel="icon" href="https://contoh-link-gambar-logo-anda.com/favicon.ico" type="image/x-icon">
+
+    <style>
+        :root {
+            --primary: #0284c7; /* Ocean Blue */
+            --primary-dark: #0369a1;
+            --dark: #0f172a; /* Deep Navy */
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #22c55e;
+            --danger: #ef4444; /* Merah Promo */
+            --bg-body: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* === LOADING SCREEN (PRELOADER) === */
+        body.loading-active {
+            overflow: hidden;
+        }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-logo {
+            font-size: 2.5em;
+            font-weight: 800;
+            letter-spacing: 4px;
+            display: flex;
+            perspective: 1000px;
+        }
+
+        .loader-logo span {
+            display: inline-block;
+            color: #ffffff;
+            transform-style: preserve-3d;
+            transform-origin: center;
+            animation: flipSpin 2s infinite ease-in-out;
+            animation-delay: calc(0.15s * var(--i));
+        }
+
+        .loader-logo span:nth-child(n+3) {
+            color: var(--primary);
+        }
+
+        @keyframes flipSpin {
+            0%, 20% { transform: rotateY(0deg); }
+            80%, 100% { transform: rotateY(360deg); }
+        }
+
+        /* === GLOBAL STYLES === */
+        body {
+            background-color: var(--bg-body);
+            color: var(--dark);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* === NAVBAR MENU & ANIMASI LOGO ATAS === */
+        nav {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-brand {
+            font-size: 1.6em;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-brand span {
+            color: var(--primary);
+            display: inline-block;
+            animation: floatPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes floatPulse {
+            0% { transform: translateY(0px); text-shadow: 0 0 0 rgba(2,132,199,0); }
+            50% { transform: translateY(-3px); text-shadow: 0 5px 15px rgba(2,132,199,0.5); }
+            100% { transform: translateY(0px); text-shadow: 0 0 0 rgba(2,132,199,0); }
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            color: var(--primary);
+        }
+
+        /* === HEADER BANNER === */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: white;
+            text-align: center;
+            padding: 140px 20px 100px 20px; 
+            position: relative;
+        }
+
+        .logo-large {
+            font-size: 3em;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .logo-large span {
+            color: var(--primary);
+        }
+
+        header p {
+            color: #cbd5e1;
+            font-size: 1.1em;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+        }
+
+        .marketplaces {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .badge {
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .badge.shopee { background-color: #ee4d2d; color: white; }
+        .badge.tiktok { background-color: #000000; color: white; }
+
+        /* === CONTAINER MAIN === */
+        .container {
+            max-width: 1100px;
+            margin: -50px auto 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* === TIMER BANNER === */
+        .timer-banner {
+            background: linear-gradient(135deg, var(--danger), #dc2626);
+            color: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 50px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            border: 2px solid #fecaca;
+        }
+
+        .timer-banner h3 {
+            font-size: 1.2em;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 1px;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 20px;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            min-width: 80px;
+            backdrop-filter: blur(5px);
+        }
+
+        .time-label {
+            font-size: 0.35em;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        /* === CATALOG CARD GRID === */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 45px 30px 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
+            border-color: var(--danger);
+        }
+
+        .promo-label {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--danger);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-weight: 800;
+            font-size: 0.9em;
+            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+            white-space: nowrap;
+            letter-spacing: 1px;
+        }
+
+        .card-stars {
+            color: #f59e0b;
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .card h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .price-wrapper {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .price-coret {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .price-tag {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .price-tag span {
+            font-size: 0.4em;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+
+        .features li {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            color: #475569;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.5;
+            gap: 10px; 
+        }
+
+        .features li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: 900;
+            font-size: 1.1em;
+            flex-shrink: 0; 
+        }
+        
+        .features li span {
+            display: block;
+            width: 100%;
+        }
+
+        /* === KALKULATOR SECTION === */
+        .calculator-box {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 50px;
+        }
+
+        .calculator-box h2 {
+            text-align: center;
+            margin-bottom: 35px;
+            color: var(--dark);
+            font-size: 2em;
+        }
+
+        .calc-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            color: #334155;
+        }
+
+        .form-group select, .form-group input {
+            padding: 15px;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s;
+            background-color: #f8fafc;
+        }
+
+        .form-group select:focus, .form-group input:focus {
+            border-color: var(--primary);
+            background-color: white;
+        }
+
+        .total-display {
+            text-align: center;
+            background: #f0fdf4;
+            border: 2px dashed var(--success);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .total-display p {
+            font-size: 1.1em;
+            color: #166534;
+            font-weight: 600;
+        }
+
+        .total-display h4 {
+            font-size: 2.8em;
+            color: #15803d;
+            font-weight: 900;
+            margin: 5px 0 10px 0;
+            line-height: 1;
+        }
+
+        .hemat-badge {
+            display: inline-block;
+            background-color: #fef2f2;
+            color: var(--danger);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.95em;
+            font-weight: 800;
+            border: 1px solid #fecaca;
+        }
+
+        /* === BUTTONS === */
+        .btn {
+            display: block;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            font-size: 1.1em;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover { 
+            background-color: var(--primary-dark); 
+            transform: translateY(-2px);
+        }
+        
+        .btn-whatsapp { 
+            background-color: var(--success); 
+            font-size: 1.2em;
+            padding: 18px;
+        }
+        
+        .btn-whatsapp:hover { 
+            background-color: #16a34a; 
+        }
+
+        /* === RESPONSIVE MOBILE === */
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+            header { padding: 120px 20px 80px 20px; }
+            .logo-large { font-size: 2.2em; }
+            .countdown { font-size: 1.5em; gap: 10px; }
+            .time-box { min-width: 60px; padding: 8px 10px; }
+            .calculator-box { padding: 30px 20px; }
+            .total-display h4 { font-size: 2.2em; }
+        }
+    </style>
+</head>
+<body class="loading-active" id="beranda">
+
+    <div id="preloader">
+        <div class="loader-logo">
+            <span style="--i:1">S</span>
+            <span style="--i:2">E</span>
+            <span style="--i:3">A</span>
+            <span style="--i:4">G</span>
+            <span style="--i:5">E</span>
+            <span style="--i:6">N</span>
+            <span style="--i:7">C</span>
+            <span style="--i:8">Y</span>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#beranda" class="nav-brand">SE<span>AGENCY</span></a>
+        <ul class="nav-links">
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#layanan">Layanan</a></li>
+            <li><a href="#order-calculator">Pemesanan</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="logo-large">SE<span>AGENCY</span></div>
+        <p>Partner Terbaik Akselerasi Reputasi Toko Online Anda. Optimalkan Penjualan dengan Ulasan Bintang 5 Organik & Aman.</p>
+        <div class="marketplaces">
+            <span class="badge shopee">Shopee</span>
+            <span class="badge tiktok">TikTok Shop</span>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="timer-banner">
+            <h3>🔥 PROMO EKSKLUSIF BERAKHIR DALAM:</h3>
+            <div class="countdown">
+                <div class="time-box">
+                    <span id="hours">23</span>
+                    <span class="time-label">Jam</span>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">59</span>
+                    <span class="time-label">Menit</span>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">59</span>
+                    <span class="time-label">Detik</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="catalog-grid" id="layanan">
+            
+            <div class="card">
+                <div class="promo-label">🔥 Diskon 46%</div>
+                <div>
+                    <div class="card-stars">⭐⭐⭐⭐⭐</div>
+                    <h3>Paket Teks Kata</h3>
+                    <div class="price-wrapper">
+                        <div class="price-coret">Rp 15.000</div>
+                        <div class="price-tag">Rp 8.000 <span>/ akun</span></div>
+                    </div>
+                    <ul class="features">
+                        <li><span><strong>Disediakan Agency:</strong> Teks ulasan natural sesuai keyword produk.</span></li>
+                        <li><span><strong>Disediakan Agency:</strong> Alamat penerima paket (tersebar di seluruh Pulau Jawa).</span></li>
+                        <li><span>Akun aktif & terhindar dari deteksi spam.</span></li>
+                        <li><span>Sangat aman & organik di mata algoritma.</span></li>
+                    </ul>
+                </div>
+                <a href="#order-calculator" class="btn">Pilih Paket</a>
+            </div>
+
+            <div class="card">
+                <div class="promo-label">🔥 Best Seller</div>
+                <div>
+                    <div class="card-stars">⭐⭐⭐⭐⭐</div>
+                    <h3>Paket Visual Foto</h3>
+                    <div class="price-wrapper">
+                        <div class="price-coret">Rp 15.000</div>
+                        <div class="price-tag">Rp 8.000 <span>/ akun</span></div>
+                    </div>
+                    <ul class="features">
+                        <li><span><strong>Disediakan Seller:</strong> Foto produk yang akan diunggah untuk ulasan.</span></li>
+                        <li><span><strong>Disediakan Agency:</strong> Teks ulasan memikat & alamat penerima (seluruh Pulau Jawa).</span></li>
+                        <li><span>Gambar membuat calon pembeli lebih yakin.</span></li>
+                        <li><span>Proses terstruktur & aman dari banned.</span></li>
+                    </ul>
+                </div>
+                <a href="#order-calculator" class="btn">Pilih Paket</a>
+            </div>
+
+            <div class="card">
+                <div class="promo-label">🔥 Rekomendasi</div>
+                <div>
+                    <div class="card-stars">⭐⭐⭐⭐⭐</div>
+                    <h3>Paket Premium Video</h3>
+                    <div class="price-wrapper">
+                        <div class="price-coret">Rp 15.000</div>
+                        <div class="price-tag">Rp 8.000 <span>/ akun</span></div>
+                    </div>
+                    <ul class="features">
+                        <li><span><strong>Disediakan Seller:</strong> Foto & Video unboxing/produk untuk ulasan.</span></li>
+                        <li><span><strong>Disediakan Agency:</strong> Teks ulasan fyp & alamat penerima (seluruh Pulau Jawa).</span></li>
+                        <li><span>Kredibilitas ulasan toko meningkat 10x lipat.</span></li>
+                        <li><span>Garansi proses aman & organik 100%.</span></li>
+                    </ul>
+                </div>
+                <a href="#order-calculator" class="btn">Pilih Paket</a>
+            </div>
+
+        </div>
+
+        <div class="calculator-box" id="order-calculator">
+            <h2>Kalkulator & Order SEAGENCY</h2>
+            <div class="calc-form">
+                <div class="form-group">
+                    <label for="marketplace">Pilih Marketplace</label>
+                    <select id="marketplace">
+                        <option value="Shopee">Shopee</option>
+                        <option value="TikTok Shop">TikTok Shop</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="paket">Pilih Jenis Ulasan</label>
+                    <select id="paket">
+                        <option value="Paket Teks Kata">Kata-kata Saja (Rp 8.000)</option>
+                        <option value="Paket Visual Foto">Kata-kata + Foto (Rp 8.000)</option>
+                        <option value="Paket Premium Video">Kata-kata + Foto + Video (Rp 8.000)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jumlah">Jumlah Akun / Ulasan</label>
+                    <input type="number" id="jumlah" value="10" min="1">
+                </div>
+            </div>
+
+            <div class="total-display">
+                <p>Estimasi Total Investasi</p>
+                <div class="price-coret" id="total-coret">Rp 150.000</div>
+                <h4 id="total-harga">Rp 80.000</h4>
+                <div class="hemat-badge" id="total-hemat">Anda Hemat Rp 70.000!</div>
+            </div>
+
+            <button class="btn btn-whatsapp" onclick="kirimWhatsApp()">Pesan Via WhatsApp Fast Respon</button>
+        </div>
+
+    </div>
+
+    <script>
+        // --- 1. LOGIKA HILANGKAN LOADING SCREEN ---
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('preloader').classList.add('hidden');
+                document.body.classList.remove('loading-active');
+            }, 2500);
+        });
+
+        // --- 2. LOGIKA TIMER HITUNG MUNDUR REPEAT OTOMATIS 24 JAM ---
+        function startTimer() {
+            let endTime = localStorage.getItem('seagency_promo');
+            
+            if (!endTime || new Date().getTime() > endTime) {
+                endTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+                localStorage.setItem('seagency_promo', endTime);
+            }
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                let distance = endTime - now;
+
+                // FIX UPDATE: Jika waktu habis (< 0), langsung perbarui waktu ke 24 jam baru tanpa merusak interval
+                if (distance < 0) {
+                    endTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+                    localStorage.setItem('seagency_promo', endTime);
+                    distance = endTime - now;
+                }
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            }
+            
+            setInterval(updateTimer, 1000);
+            updateTimer();
+        }
+        startTimer();
+
+        // --- 3. LOGIKA KALKULATOR ANTI-ERROR ---
+        const hargaNormal = 15000;
+        const hargaPromo = 8000;
+        
+        const inputJumlah = document.getElementById('jumlah');
+        const selectPaket = document.getElementById('paket');
+        const selectMarketplace = document.getElementById('marketplace');
+        
+        const displayTotal = document.getElementById('total-harga');
+        const displayCoret = document.getElementById('total-coret');
+        const displayHemat = document.getElementById('total-hemat');
+
+        let totalPromoKirim = "Rp 80.000";
+
+        function hitungTotal() {
+            let jumlah = parseInt(inputJumlah.value);
+            
+            if (isNaN(jumlah) || jumlah < 1) {
+                jumlah = 1;
+            }
+
+            let totalNormal = jumlah * hargaNormal;
+            let totalPromo = jumlah * hargaPromo;
+            let selisihHemat = totalNormal - totalPromo;
+            
+            displayCoret.innerText = "Rp " + totalNormal.toLocaleString('id-ID');
+            displayTotal.innerText = "Rp " + totalPromo.toLocaleString('id-ID');
+            displayHemat.innerText = "Wow! Anda Hemat Rp " + selisihHemat.toLocaleString('id-ID') + " 🎉";
+            
+            totalPromoKirim = "Rp " + totalPromo.toLocaleString('id-ID');
+        }
+
+        inputJumlah.addEventListener('change', function() {
+            let jumlah = parseInt(this.value);
+            if (isNaN(jumlah) || jumlah < 1) {
+                this.value = 1;
+            }
+            hitungTotal();
+        });
+        
+        inputJumlah.addEventListener('input', hitungTotal);
+        selectPaket.addEventListener('change', hitungTotal);
+
+        // --- 4. LOGIKA WHATSAPP ---
+        function kirimWhatsApp() {
+            let market = selectMarketplace.value;
+            let paket = selectPaket.value;
+            
+            let jumlah = parseInt(inputJumlah.value);
+            if (isNaN(jumlah) || jumlah < 1) { jumlah = 1; }
+
+            let noWA = "6285199640985"; 
+            
+            let teksPesan = `Halo SEAGENCY, saya ingin mengambil *PROMO EKSKLUSIF* jasa ulasan.%0A%0A` +
+                            `• Marketplace: ${market}%0A` +
+                            `• Pilihan Paket: ${paket}%0A` +
+                            `• Jumlah: ${jumlah} Akun%0A` +
+                            `• Total Biaya: *${totalPromoKirim}*%0A%0A` +
+                            `Berikan Form Order Lengkap atau bisa jelaskan dulu system nya bagaimana !`;
+
+            window.open(`https://wa.me/${noWA}?text=${teksPesan}`, '_blank');
+        }
+    </script>
+</body>
+</html>
